@@ -50,14 +50,33 @@ Logger logger = Logger.getLogger(DBconn.class.getSimpleName());
 		int result = 0;
 		try(Connection conn = getConnection()){
 			String sql = "INSERT INTO GameUser "
-					+ "(username, login, pwd) "
-					+ "VALUES (?,?,?)"; 
+					+ "(username, login, pwd, sex, phone, email) "
+					+ "VALUES (?,?,?, ?, ?, ?)"; 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getLogin());
 			pstmt.setString(3, user.getPwd());
+			pstmt.setString(4, user.getSex());
+			pstmt.setString(5, user.getPhone());
+			pstmt.setString(6, user.getEmail());
+			
 			result= pstmt.executeUpdate();
 		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public int existUser(GameUser user) {
+		int result = 0;
+		try(Connection conn = getConnection()){
+			String sql = "SELECT * FROM GameUser WHERE login = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getLogin());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("id");
+			}
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
