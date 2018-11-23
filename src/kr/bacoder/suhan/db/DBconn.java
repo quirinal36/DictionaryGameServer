@@ -50,8 +50,8 @@ Logger logger = Logger.getLogger(DBconn.class.getSimpleName());
 		int result = 0;
 		try(Connection conn = getConnection()){
 			String sql = "INSERT INTO GameUser "
-					+ "(username, login, pwd, sex, phone, email) "
-					+ "VALUES (?,?,?, ?, ?, ?)"; 
+					+ "(username, login, pwd, sex, phone, email, signupDate) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP())"; 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getLogin());

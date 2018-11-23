@@ -6,7 +6,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.logging.Logger"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%
 	// final String path = getServletContext().getRealPath("/img");
 	Logger logger = Logger.getLogger("existId.jsp");
