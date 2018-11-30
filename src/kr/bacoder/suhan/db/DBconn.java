@@ -16,11 +16,11 @@ import kr.bacoder.suhan.bean.GameUser;
 public class DBconn {
 Logger logger = Logger.getLogger(DBconn.class.getSimpleName());
 	
-	private String userName 	= "dev";
-	private String password 	= "789gagul";
+	private String userName 	= "root";
+	private String password 	= "sd794613";
 	private String dbms 		= "mysql";
-	private String dbName 		= "new_schema";
-	private String serverName 	= "35.234.23.104";
+	private String dbName 		= "game";
+	private String serverName 	= "35.189.135.40";
 	private int portNumber 		= 3306;
 	
 	public Connection getConnection() throws SQLException {
